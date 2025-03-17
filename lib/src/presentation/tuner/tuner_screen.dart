@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tuner/src/presentation/tuner/tuner_vm.dart';
+import 'package:tuner/src/presentation/tuner/tuner_view_model.dart';
 
 class TunerScreen extends ConsumerWidget {
   const TunerScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(TunerProviders.tunerProvider);
-    final notifier = ref.read(TunerProviders.tunerProvider.notifier);
+    final state = ref.watch(tunerViewModelProvider);
+    final notifier = ref.read(tunerViewModelProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
