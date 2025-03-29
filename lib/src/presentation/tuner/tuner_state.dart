@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'tuner_state.freezed.dart';
+part '../../../_generated/src/presentation/tuner/tuner_state.freezed.dart';
 
 @freezed
 class TunerState with _$TunerState {
