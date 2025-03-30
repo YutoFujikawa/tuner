@@ -4,9 +4,9 @@ targets:
       source_gen|combining_builder:
         options:
           build_extensions:
-            '^lib/{{}}.dart': 'lib/_generated/{{}}.g.dart'
+            '^lib/{{}}.dart': 'lib/src/_generated/{{}}.g.dart'
       freezed:
         options:
           build_extensions:
-            '^lib/{{}}.dart': 'lib/_generated/{{}}.freezed.dart'
+            '^lib/{{}}.dart': 'lib/src/_generated/{{}}.freezed.dart'
 
