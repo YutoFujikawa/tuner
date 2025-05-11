@@ -1,3 +1,4 @@
+import 'package:audio_streamer/audio_streamer.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tuner/src/presentation/tuner/tuner_state.dart';
@@ -18,11 +19,26 @@ final class TunerViewModel extends _$TunerViewModel {
       await requestPermission();
     }
 
-    state = state.copyWith(isRecording: true);
+    AudioStreamer().sampleRate = 22100;
+
+    final subscription = AudioStreamer().audioStream.listen(
+      (List<double> buffer) {
+        state = state.copyWith(
+          audio: state.audio + buffer,
+        );
+      },
+      onError: (error) {
+        state = state.copyWith(isRecording: false);
+        throw Exception(error);
+      },
+    );
+
+    state = state.copyWith(isRecording: true, audioSubscription: subscription);
   }
 
   void stop() async {
-    state = state.copyWith(isRecording: false);
+    state.audioSubscription?.cancel();
+    state = state.copyWith(isRecording: false, audioSubscription: null);
   }
 
   Future<bool> checkPermission() async {

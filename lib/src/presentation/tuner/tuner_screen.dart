@@ -29,9 +29,17 @@ class TunerScreen extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 notifier.toggleRecording();
+                notifier.start();
               },
               child: Text(state.isRecording ? "停止" : "開始"),
-            )
+            ),
+            const SizedBox(height: 20),
+            // 録音された音声のデータ（ここではaudioの最初の数サンプルを表示）
+            if (state.audio.isNotEmpty)
+              Text(
+                "音声データ: ${state.audio.last}", // 最初の10サンプルを表示
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
           ],
         ),
       ),

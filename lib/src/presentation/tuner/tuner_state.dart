@@ -8,8 +8,6 @@ class TunerState with _$TunerState {
   const factory TunerState({
     @Default(false) bool isRecording,
     @Default([]) List<double> audio,
-    List<double>? latestBuffer,
-    double? recordingTime,
     StreamSubscription<List<double>>? audioSubscription,
   }) = _TunerState;
 }
