@@ -9,5 +9,6 @@ class TunerState with _$TunerState {
     @Default(false) bool isRecording,
     @Default([]) List<double> audio,
     StreamSubscription<List<double>>? audioSubscription,
+    @Default(0.0) double frequency, // 周波数
   }) = _TunerState;
 }

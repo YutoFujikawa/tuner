@@ -34,12 +34,15 @@ class TunerScreen extends ConsumerWidget {
               child: Text(state.isRecording ? "停止" : "開始"),
             ),
             const SizedBox(height: 20),
-            // 録音された音声のデータ（ここではaudioの最初の数サンプルを表示）
             if (state.audio.isNotEmpty)
               Text(
-                "音声データ: ${state.audio.last}", // 最初の10サンプルを表示
+                "音声データ: ${state.audio.last}", // 最後のサンプルを表示
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text("周波数 ${state.frequency}"),
           ],
         ),
       ),
